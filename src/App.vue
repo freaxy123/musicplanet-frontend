@@ -1,14 +1,16 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
-  <a class="text-9xl">TEST</a>
+  <div class="flex flex-col min-h-screen">
+    <NavbarTop />
+    <Content />
+  </div>
 </template>
 
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import NavbarTop from './components/NavbarTop.vue'
+import Content from './components/Content.vue'
 
-// This starter template is using Vue 3 experimental <script setup> SFCs
-// Check out https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md
+
+
 </script>
 
 <style>
