@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-col min-h-screen">
     <NavbarTop />
-    <Content />
-  </div>
+    <div class="fixed h-full w-full">
+      <router-view/>
+    </div>
 </template>
 
 <script setup>
@@ -14,12 +14,4 @@ import Content from './components/Content.vue'
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
