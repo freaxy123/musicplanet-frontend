@@ -7,7 +7,7 @@
         <!-- Line -->
         <div class="bg-black bg-opacity-10 h-0.5 mx-4 rounded my-2"></div>
         
-        <a>Logout</a>
+        <button @click="logout">Logout</button>
       </div>
          
       <!-- Bottom part -->
@@ -18,7 +18,15 @@
 </template>
 
 <script>
+import Authorization from '../services/Authorization';
+
 export default {
+  methods: {
+      logout () {
+        Authorization.logout();
+        this.$router.push('/login');
+      },
+    }
     
 }
 </script>

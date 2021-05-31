@@ -1,16 +1,14 @@
 <template>
-    <Content />
+  Home
 </template>
 
 <script>
-import Content from '../components/Content.vue'
-
 export default {
 name: "HomeView",
-    components: {Content},
-  methods: {
+    components: {},
+    methods: {
 
-  }
+    }
 }
 </script>
 
