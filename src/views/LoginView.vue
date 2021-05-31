@@ -1,6 +1,5 @@
 <template lang="">
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
-
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col" v-on:submit.prevent="login">
         <div class="m-4 space-y-4">
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="username" type="text" placeholder="Username" v-model="user.username">
 
@@ -13,12 +12,11 @@
                 Forgot Password?
             </a>
 
-            <button @click="login" class="bg-yellow-400 hover:text-black transition duration-200 text-white font-bold py-2 px-4 rounded" type="button">
+            <button class="bg-yellow-400 hover:text-black transition duration-200 text-white font-bold py-2 px-4 rounded" type="submit">
                 Sign In
             </button>
-
         </div>
-    </div>
+    </form >
 </template>
 
 <script>
