@@ -24,24 +24,30 @@
 import Navbar from '../components/Navbar.vue'
 import NavbarLeft from '../components/NavbarLeft.vue'
 import axios from 'axios';
+import http from "../http-common";
 
 export default {
     components: {Navbar, NavbarLeft},
     methods: {
         test () {
-        let token = JSON.parse(localStorage.getItem('user')).jwt;
-        axios.get('http://localhost:8080/test', {
-            headers: {            
-            'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
-            'authorization': 'Bearer ' + token,
-            }
-        })
-        .then((res) => {
-            console.log(res.data)
-        })
-        .catch((error) => {
-            console.error(error)
-        })
+            /*
+            let token = JSON.parse(localStorage.getItem('user')).jwt;
+            axios.get('http://localhost:8080/test', {
+                headers: {            
+                "Content-type": "application/json",
+                'Authorization': `Bearer ${token}`,
+                }
+            })
+            .then((res) => {
+                console.log(res.data)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+            */
+
+        console.log(http.get("/test")) ;
+
         },
     }
 }
