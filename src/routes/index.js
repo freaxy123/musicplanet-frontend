@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import RegisterView from "../views/RegisterView.vue";
+import TestView from "../views/TestView.vue";
 import Authenticated from "../layouts/Authenticated.vue";
 
 const routes = [
@@ -21,6 +22,11 @@ const routes = [
     component: RegisterView,
   },
   {
+    path: "/test",
+    name: "Test",
+    component: TestView,
+  },
+  {
     path: '/user',
     name: 'user',
     component: Authenticated,
@@ -38,7 +44,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['/login', '/register', '/home'];
+  const publicPages = ['/login', '/register', '/home', '/test'];
   const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem('user');
 
