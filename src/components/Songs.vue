@@ -1,12 +1,17 @@
 <template>
-  Home
+  <div class="flex justify-between items-center border-b-2 p-2"
+              v-for="(song, index) in songs"
+              :key="index"
+          >
+            {{ song.title }}
+          </div>
 </template>
 
 <script>
 import SongService from "../services/SongService";
 
 export default {
-name: "HomeView",
+name: "Songs",
     components: {},
     data(){
       return{
@@ -20,7 +25,7 @@ name: "HomeView",
       retrieveSongs(){
         SongService.getAll()
             .then(response => {
-              this.readers = response.data;
+              this.songs = response.data;
               console.log(response.data);
             })
             .catch(e => {

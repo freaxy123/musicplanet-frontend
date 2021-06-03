@@ -3,13 +3,11 @@ import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import Authenticated from "../layouts/Authenticated.vue";
+import Songs from "../components/Songs.vue";
+import AddArtist from "../components/AddArtist.vue";
+import AddSong from "../components/AddSong.vue";
 
 const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: HomeView,
-  },
   {
     path: "/login",
     name: "Login",
@@ -21,14 +19,26 @@ const routes = [
     component: RegisterView,
   },
   {
-    path: '/user',
-    name: 'user',
+    path: '/',
+    name: 'Home',
     component: Authenticated,
-    children: [{
+    children: [
+          {
             path: '',
-            name: 'Homescreen',
-            component: HomeView,
-        }]
+            name: 'Songs',
+            component: Songs,
+          },
+          {
+            path: 'addartist',
+            name: 'Add Artist',
+            component: AddArtist,
+          },
+          {
+            path: 'addsong',
+            name: 'Add Song',
+            component: AddSong,
+          },
+      ]
   },
 ];
 

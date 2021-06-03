@@ -7,7 +7,7 @@
     </div>
     
     <div class="flex justify-around flex-grow items-center">
-      <a class="hover:text-yellow-400 transition duration-200" href="#">Home</a>
+      <router-link class="hover:text-yellow-400 transition duration-200" to="/">Home</router-link>
       <a class="hover:text-yellow-400 transition duration-200" href="#">Library</a>
       <a class="hover:text-yellow-400 transition duration-200" href="#">Search</a>
     </div>
