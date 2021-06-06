@@ -4,7 +4,7 @@
               :key="index"
           >
             {{ song.title }}
-          </div>
+  </div>
 </template>
 
 <script>
@@ -12,14 +12,15 @@ import SongService from "../services/SongService";
 
 export default {
 name: "Songs",
-    components: {},
     data(){
       return{
         songs: [],
+        artists: [],
       }
     },
     mounted() {
       this.retrieveSongs();
+      //this.retrieveArtists();
     },
     methods: {
       retrieveSongs(){
@@ -32,8 +33,18 @@ name: "Songs",
               console.log(e);
             });
     },
-
-    }
+    retrieveArtists(){
+      ArtistService.getAll()
+          .then(response => {
+              this.artists = response.data;
+              console.log(response.data);
+          })
+          .catch(e => {
+              console.log(e);
+          });
+      console.log(this.artists);
+    },
+  }
 }
 </script>
 

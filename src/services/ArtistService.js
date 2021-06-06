@@ -2,7 +2,7 @@ import http from "../http-common";
 
 class ArtistService {
     getAll() {
-        return http.get("/artists");
+        return http.get("/artists/");
     }
     get(id) {
         return http.get(`/artists/${id}`);
@@ -21,7 +21,7 @@ class ArtistService {
     }
 
     deleteAll() {
-        return http.delete(`/artists`);
+        return http.delete(`/artists/`);
     }
     findByName(name){
         return http.get(`/artists/name/${name}`)

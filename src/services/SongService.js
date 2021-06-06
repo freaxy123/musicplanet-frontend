@@ -21,7 +21,7 @@ class SongService {
     }
 
     deleteAll() {
-        return http.delete(`/songs`);
+        return http.delete(`/songs/`);
     }
     findByTitle(title){
         return http.get(`/songs/title/${title}`)
