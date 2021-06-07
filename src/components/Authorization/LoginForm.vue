@@ -16,7 +16,6 @@
             <button @click="login" class="bg-yellow-400 hover:text-black transition duration-200 text-white font-bold py-2 px-4 rounded" type="button">
                 Sign In
             </button>
-
         </div>
     </div>
 </template>

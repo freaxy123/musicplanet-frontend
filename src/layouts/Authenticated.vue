@@ -7,10 +7,7 @@
         
         <!-- Main Content -->
         <div class="flex-grow p-10">
-        <a class="font-bold text-3xl">{{this.$route.name}}</a>
-        
-        <!-- Line -->
-        <div class="bg-black bg-opacity-10 h-0.5 rounded my-2"></div>
+        <a class="flex flex-grow font-bold text-3xl border-b-2 p-2 border-gray-600">{{this.$route.name}}</a>
 
         <!-- Begin Content -->
         <router-view></router-view>

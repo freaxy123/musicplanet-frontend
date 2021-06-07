@@ -69,7 +69,7 @@ export default {
         Authorization.login(this.user).then(
           user => {
             console.log("User succesfully logged in");
-            this.$router.push('/user');
+            this.$router.push('/');
           },
           error => {
             alert("Invalid credentails");

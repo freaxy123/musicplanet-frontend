@@ -1,14 +1,45 @@
 <template>
-  <div class="flex justify-between items-center border-b-2 p-2"
-              v-for="(song, index) in songs"
-              :key="index"
-          >
-            {{ song.title }}
+
+  <div>
+    <div class="flex flex-grow justify-around p-2 text-sm mr-5">
+      <a>Title</a>
+      <a>Artist</a>
+    </div>
+
+    <div class="flex justify-between items-center border-b-2 p-2 bg-gray-100"
+                v-for="(artist, index) in artists"
+                :key="index"
+            >
+            <div class="flex flex-grow justify-around"
+                  v-for="(song, index) in artist.songs"
+                  :key="index">
+              <a>{{ song.title }}</a>
+              <button class="hover:underline" @click="$router.push({ name: 'Artist', params: {id: artist.id}})">{{ artist.name }}</button>
+            </div>
+
+            <button @click="showMenu = !showMenu">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+              </svg>
+            </button>
+              
+    </div>
+  </div>
+
+  <div class="flex h-full w-full bg-black bg-opacity-50 absolute inset-0 items-center justify-center" v-if="showMenu" @click="showMenu = false">
+        <div class="mx-auto">
+          
+          <div class="bg-indigo-800 text-white font-bold rounded-lg border shadow-lg p-10">
+            <a> Add to playlist </a>
+          </div>
+        
+        </div>
   </div>
 </template>
 
 <script>
 import SongService from "../services/SongService";
+import ArtistService from "../services/ArtistService";
 
 export default {
 name: "Songs",
@@ -16,11 +47,12 @@ name: "Songs",
       return{
         songs: [],
         artists: [],
+        showMenu: false,
       }
     },
     mounted() {
       this.retrieveSongs();
-      //this.retrieveArtists();
+      this.retrieveArtists();
     },
     methods: {
       retrieveSongs(){
