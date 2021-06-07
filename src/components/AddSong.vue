@@ -30,7 +30,9 @@ export default {
     data() {
         return {
             song: {
+                id: "",
                 title: "",
+                artists: []
             },
             artists: [],
             selectedArtist: "",
@@ -57,8 +59,11 @@ export default {
                 });
             }
             else{ 	
-                this.selectedArtist.songs.push(this.song);
-                ArtistService.update(this.selectedArtist.id, this.selectedArtist)
+                //this.selectedArtist.songs.push(this.song);
+                this.song.artists = this.selectedArtist;
+                console.log(this.song);
+                //ArtistService.update(this.selectedArtist.id, this.selectedArtist)
+                SongService.create(this.song)
                     .then(response => {
                         console.log(response.data);
                         console.log('The Song was created successfully!');

@@ -26,6 +26,12 @@ class SongService {
     findByTitle(title){
         return http.get(`/songs/title/${title}`)
     }
+    findByArtistName(name){
+        return http.get(`/songs/artist/name/${name}`)
+    }
+    findByArtistId(id){
+        return http.get(`/songs/artist/id/${id}`)
+    }
 }
 
 export default new SongService();

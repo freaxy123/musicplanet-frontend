@@ -7,11 +7,11 @@
     </div>
 
     <div class="flex justify-between items-center border-b-2 p-2 bg-gray-100"
-                v-for="(artist, index) in artists"
+                v-for="(song, index) in songs"
                 :key="index"
             >
             <div class="flex flex-grow justify-around"
-                  v-for="(song, index) in artist.songs"
+                  v-for="(artist, index) in song.artists"
                   :key="index">
               <a>{{ song.title }}</a>
               <button class="hover:underline" @click="$router.push({ name: 'Artist', params: {id: artist.id}})">{{ artist.name }}</button>
@@ -52,7 +52,6 @@ name: "Songs",
     },
     mounted() {
       this.retrieveSongs();
-      this.retrieveArtists();
     },
     methods: {
       retrieveSongs(){
@@ -66,6 +65,7 @@ name: "Songs",
             });
     },
     retrieveArtists(){
+      /*
       ArtistService.getAll()
           .then(response => {
               this.artists = response.data;
@@ -75,6 +75,7 @@ name: "Songs",
               console.log(e);
           });
       console.log(this.artists);
+      */
     },
   }
 }
