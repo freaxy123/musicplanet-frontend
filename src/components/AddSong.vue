@@ -30,13 +30,13 @@ export default {
     data() {
         return {
             song: {
-                id: "",
                 title: "",
-                artists: []
+                artists: [{
+                    id: ""
+                }]
             },
             artists: [],
             selectedArtist: "",
-            artist: Object
         }
     },
     watch:{
@@ -60,9 +60,10 @@ export default {
             }
             else{ 	
                 //this.selectedArtist.songs.push(this.song);
-                this.song.artists = this.selectedArtist;
+                this.song.artists[0].id = this.selectedArtist.id;
                 console.log(this.song);
                 //ArtistService.update(this.selectedArtist.id, this.selectedArtist)
+                
                 SongService.create(this.song)
                     .then(response => {
                         console.log(response.data);
@@ -73,6 +74,7 @@ export default {
                         console.log("Song could not be created, please check the fields");
                     });
                     Object.assign(this.$data, this.$options.data()); //Reset component variables
+                    
             }
             
             

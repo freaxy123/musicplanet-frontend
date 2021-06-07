@@ -12,7 +12,7 @@
         <!-- Line -->
         <div class="bg-black bg-opacity-10 h-0.5 mx-4 rounded my-2"></div>
         
-        <button @click="logout">Logout</button>
+        <button @click="logout" class="hover:underline">Logout</button>
       </div>
          
       <!-- Bottom part -->

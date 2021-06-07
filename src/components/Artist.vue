@@ -5,7 +5,7 @@
         </div>
 
 
-        <div class="flex justify-between items-center border-b-2 p-2 bg-gray-100"
+        <div class="flex justify-between items-center border-b-2 p-2 hover:bg-gray-100"
                     v-for="(song, index) in songs"
                     :key="index"
                 >
