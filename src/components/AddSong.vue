@@ -74,10 +74,8 @@ export default {
                         console.log("Song could not be created, please check the fields");
                     });
                     Object.assign(this.$data, this.$options.data()); //Reset component variables
-                    
+                    this.retrieveArtists();
             }
-            
-            
         },
         retrieveArtists(){
             ArtistService.getAll()

@@ -6,6 +6,7 @@ import Songs from "../components/Songs.vue";
 import AddArtist from "../components/AddArtist.vue";
 import AddSong from "../components/AddSong.vue";
 import Artist from "../components/Artist.vue";
+import Playlists from "../components/Playlists.vue"
 
 const routes = [
   {
@@ -39,9 +40,14 @@ const routes = [
             component: AddSong,
           },
           {
-            path: 'Artist',
+            path: 'artist',
             name: 'Artist',
             component: Artist,
+          },
+          {
+            path: 'playlists',
+            name: 'Playlists',
+            component: Playlists,
           },
       ]
   },

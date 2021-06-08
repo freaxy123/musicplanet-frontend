@@ -8,13 +8,14 @@
         <div class="max-w-md w-full mx-auto">
             <div class="bg-gray-400 bg-opacity-50 rounded-lg overflow-hidden shadow-2xl">
                 <div class="p-8">
-                    <h1 class="text-4xl text-center mb-12 text-black font-bold">Musicworld</h1>
+                    <h1 class="text-4xl text-center mb-12 text-black font-bold">MusicPlanet</h1>
                     <form class="flex flex-col" v-on:submit.prevent="login">
 
                         <div class="m-4 space-y-4">
-                            <input class="bg-gray-100 shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="username" type="text" placeholder="Username" v-model="user.username">
-                            <input class="bg-gray-100 shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" type="password" placeholder="Password" v-model="user.password">
+                            <input @change="errorMessage = ''" class="bg-gray-100 shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="username" type="text" placeholder="Username" v-model="user.username">
+                            <input @change="errorMessage = ''" class="bg-gray-100 shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" type="password" placeholder="Password" v-model="user.password">
                         </div>
+                        <a v-if="errorMessage" class="text-red-600 font-xl text-center font-medium">{{errorMessage}}</a>
 
                         <div class="flex flex-col justify-between">
                             <a class="inline-block align-baseline font-bold text-sm text-black hover:underline py-3" href="#">
@@ -62,6 +63,7 @@ export default {
             {username: ""},
             {password: ""}
           ],
+          errorMessage: ""
       }
     },    
     methods: {
@@ -72,7 +74,7 @@ export default {
             this.$router.push('/');
           },
           error => {
-            alert("Invalid credentails");
+            this.errorMessage = "Invalid credentails";
           });
       },
     }

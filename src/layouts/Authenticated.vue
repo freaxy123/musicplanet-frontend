@@ -10,7 +10,9 @@
         <a class="flex flex-grow font-bold text-3xl border-b-2 p-2 border-gray-600">{{this.$route.name}}</a>
 
         <!-- Begin Content -->
-        <router-view></router-view>
+        <transition name="fade">
+            <router-view/>
+        </transition>
         <!-- End Content -->
         
         </div>
@@ -31,5 +33,10 @@ export default {
 </script>
 
 <style>
-    
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .2s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+    opacity: 0
+}   
 </style>
