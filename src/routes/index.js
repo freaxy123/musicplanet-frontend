@@ -7,6 +7,7 @@ import AddArtist from "../components/AddArtist.vue";
 import AddSong from "../components/AddSong.vue";
 import Artist from "../components/Artist.vue";
 import Playlist from "../components/Playlist.vue"
+import Home from "../components/Home.vue";
 
 const routes = [
   {
@@ -26,7 +27,12 @@ const routes = [
     children: [
           {
             path: '',
-            name: 'Songs',
+            name: 'Home',
+            component: Home,
+          },
+          {
+            path: 'library',
+            name: 'Library',
             component: Songs,
           },
           {

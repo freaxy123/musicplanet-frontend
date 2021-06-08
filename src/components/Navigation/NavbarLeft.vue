@@ -12,9 +12,6 @@
               {{playlist.name}}
           </button>
 
-
-
-          <router-link class="hover:underline" to="/playlists">Playlists</router-link>
           <button class="hover:text-white transition duration-200 text-black py-2 rounded" @click="addPlaylistMenu = true">Add Playlist</button>
         </div>
 
