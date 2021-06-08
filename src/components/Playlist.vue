@@ -1,6 +1,20 @@
 <template lang="">
     <div>
-        {{playlist.name}}
+        <div class="flex p-2 items-center place-content-center">
+            <div v-if="!editName">
+                <a class="text-3xl pr-4">{{playlist.name}}</a>
+                <button class="hover:text-yellow-400" @click="editName = !editName">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex" v-if="editName">
+                <input class="pr-4 bg-gray-100 shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="username" type="text" placeholder="Playlist Name" v-model="playlist.name">
+                <button class="bg-black text-white hover:text-yellow-400 ml-6 px-4" @click="editPlaylist">Confirm</button>
+            </div>
+        </div>
+
             <div>
                 <div class="flex flex-grow justify-around p-2 text-sm mr-5">
                 <a>Title</a>
@@ -46,6 +60,7 @@ export default {
             name: "",
             songs: []
         },
+        editName: false
       }
     },
     created () {
@@ -66,6 +81,18 @@ export default {
                 });
             console.log(this.playlist);
         },
+        editPlaylist(){
+            PlaylistService.update(this.playlist.id, this.playlist)
+                .then(response => {
+                    console.log(response.data);
+                    this.editName = false;
+                    this.getPlaylist();
+                })
+                .catch(e => {
+                    console.log(e);
+                    console.log("Playlists could not be retrieved");
+                });
+        }
     }
 }
 </script>
