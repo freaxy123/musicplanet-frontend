@@ -82,6 +82,7 @@ import Authorization from '../../services/Authorization.js';
 import PlaylistService from "../../services/PlaylistService";
 
 export default {
+  props: ['refreshPlaylistsTrigger'],
   data(){
     return{
       addPlaylistMenu: false,
@@ -91,6 +92,12 @@ export default {
       playlists: []
     }
   },
+  watch: { 
+    refreshPlaylistsTrigger: function(newVal, oldVal) {
+      console.log("TRIGGER");
+      this.retrievePlaylists();
+    }
+  } ,  
   mounted(){
     this.retrievePlaylists();
   },

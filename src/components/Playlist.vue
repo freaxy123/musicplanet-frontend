@@ -92,7 +92,8 @@ export default {
                     console.log(e);
                     console.log("Playlists could not be retrieved");
                 });
-        }
+                this.$emit("refreshPlaylists");
+        },
     }
 }
 </script>

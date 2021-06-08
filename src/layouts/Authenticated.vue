@@ -3,7 +3,7 @@
 
       <!-- Center -->
     <div class="flex flex-row flex-grow text-xl h-screen pb-14">
-        <NavbarLeft />
+        <NavbarLeft :refreshPlaylistsTrigger="trigger"/>
         
         <!-- Main Content -->
         <div class="flex-grow p-10">
@@ -11,7 +11,7 @@
 
         <!-- Begin Content -->
         <transition name="fade">
-            <router-view />
+            <router-view @refreshPlaylists="trigger = !trigger"/>
         </transition>
         <!-- End Content -->
         
@@ -27,6 +27,11 @@ import http from "../http-common";
 
 export default {
     components: {Navbar, NavbarLeft},
+     data(){
+      return{
+        trigger: false
+      }
+    },
     methods: {
     }
 }
