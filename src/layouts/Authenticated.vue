@@ -11,7 +11,7 @@
 
         <!-- Begin Content -->
         <transition name="fade">
-            <router-view/>
+            <router-view />
         </transition>
         <!-- End Content -->
         

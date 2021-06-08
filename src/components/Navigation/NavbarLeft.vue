@@ -4,6 +4,16 @@
       <div>
 
         <div class="flex flex-col space-y-2">
+          
+          <button class="hover:underline"
+                v-for="(playlist, index) in playlists"
+                :key="index"
+                @click="$router.push({ name: 'Playlist', params: {id: playlist.id}})">
+              {{playlist.name}}
+          </button>
+
+
+
           <router-link class="hover:underline" to="/playlists">Playlists</router-link>
           <button class="hover:text-white transition duration-200 text-black py-2 rounded" @click="addPlaylistMenu = true">Add Playlist</button>
         </div>
@@ -78,27 +88,44 @@ export default {
       playlist: {
         name: ""
       },
+      playlists: []
     }
   },
+  mounted(){
+    this.retrievePlaylists();
+  },
   methods: {
-      logout () {
-        Authorization.logout();
-        this.$router.push('/login');
-      },
-      addPlaylist(){
-        let self = this;
-        PlaylistService.create(this.playlist)
-          .then(response => {
-              console.log(response.data);
-              console.log('The playlist was created successfully!');
-              self.addPlaylistMenu = false;
-          })
-          .catch(e => {
-              console.log(e);
-              console.log("Playlist could not be created, please check the fields");
-          });
-      },
-    }
+    logout () {
+      Authorization.logout();
+      this.$router.push('/login');
+    },
+    addPlaylist(){
+      let self = this;
+      PlaylistService.create(this.playlist)
+        .then(response => {
+            console.log(response.data);
+            console.log('The playlist was created successfully!');
+            self.addPlaylistMenu = false;
+        })
+        .catch(e => {
+            console.log(e);
+            console.log("Playlist could not be created, please check the fields");
+        });
+    },
+    retrievePlaylists(){
+      PlaylistService.getAll()
+        .then(response => {
+            this.playlists = response.data;
+            console.log(response.data);
+        })
+        .catch(e => {
+            console.log(e);
+            console.log("Playlists could not be retrieved");
+        });
+        console.log("playlists");
+        console.log(this.playlists);
+    },
+  }
 }
 </script>
 

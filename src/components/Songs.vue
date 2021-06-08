@@ -33,7 +33,6 @@
   </div>
 
   <transition name="fade">
-    
     <div class="flex h-full w-full bg-black bg-opacity-50 absolute inset-0 items-center justify-center" v-if="showMenu" @click="showMenu = false;">
           <div class="mx-auto w-1/2 h-1/2">
             <div class="bg-yellow-400 rounded-lg border shadow-lg p-2 text-center">
