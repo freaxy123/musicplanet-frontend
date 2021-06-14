@@ -101,7 +101,8 @@ export default {
   methods: {
     logout () {
       Authorization.logout();
-      this.$router.push('/login');
+      //this.$router.push('/login');
+      window.location.href = "/login";
     },
     addPlaylist(){
       let self = this;
