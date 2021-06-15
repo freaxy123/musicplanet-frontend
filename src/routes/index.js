@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import LoginView from "../views/LoginView.vue";
 import RegisterView from "../views/RegisterView.vue";
-import Authenticated from "../layouts/Authenticated.vue";
+import User from "../layouts/User.vue";
+import Admin from "../layouts/Admin.vue";
 import Songs from "../components/Songs.vue";
 import AddArtist from "../components/AddArtist.vue";
 import AddSong from "../components/AddSong.vue";
@@ -23,7 +24,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Authenticated,
+    component: User,
     children: [
           {
             path: '',
@@ -53,6 +54,43 @@ const routes = [
           {
             path: 'playlist',
             name: 'Playlist',
+            component: Playlist,
+          },
+      ]
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
+    children: [
+          {
+            path: '',
+            name: 'AdminHome',
+            component: Home,
+          },
+          {
+            path: 'library',
+            name: 'AdminLibrary',
+            component: Songs,
+          },
+          {
+            path: 'addartist',
+            name: 'Admin_Add_Artist',
+            component: AddArtist,
+          },
+          {
+            path: 'addsong',
+            name: 'Admin_Add_Song',
+            component: AddSong,
+          },
+          {
+            path: 'artist',
+            name: 'Admin_Artist',
+            component: Artist,
+          },
+          {
+            path: 'playlist',
+            name: 'Admin_Playlist',
             component: Playlist,
           },
       ]

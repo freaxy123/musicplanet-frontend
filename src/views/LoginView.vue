@@ -71,13 +71,33 @@ export default {
         Authorization.login(this.user).then(
           user => {
             console.log("User succesfully logged in");
- 		window.location.href = "/";
-            //this.$router.push('/');
+ 		        
+             //Send user to the right page
+            let authorities = this.parseJwt(localStorage.getItem("user")).authorities;
+
+            if(authorities.find(x => x.authority === 'ADMIN')){
+              console.log("Logged in as admin");
+              window.location.href = "/admin";
+              //this.$router.push('/admin');
+            }
+            else{
+              console.log("Logged in as user");
+              window.location.href = "/";
+            }
           },
           error => {
             this.errorMessage = "Invalid credentails";
           });
       },
+      parseJwt (token) {
+      var base64Url = token.split('.')[1];
+      var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+
+      return JSON.parse(jsonPayload);
+      }
     }
 }
 </script>
