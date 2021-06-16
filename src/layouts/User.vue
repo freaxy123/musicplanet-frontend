@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import Navbar from '../components/Navigation/Navbar.vue'
-import NavbarLeft from '../components/Navigation/NavbarLeft.vue'
+import Navbar from '../components/User/Navigation/Navbar.vue'
+import NavbarLeft from '../components/User/Navigation/NavbarLeft.vue'
 import axios from 'axios';
 import http from "../http-common";
 

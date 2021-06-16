@@ -10,7 +10,6 @@
         <a class="flex flex-grow font-bold text-3xl border-b-2 p-2 border-gray-600">{{this.$route.name}}</a>
 
         <!-- Begin Content -->
-        ADMIN
         <transition name="fade">
             <router-view @refreshPlaylists="trigger = !trigger"/>
         </transition>
@@ -21,8 +20,8 @@
 </template>
 
 <script>
-import Navbar from '../components/Navigation/Navbar.vue'
-import NavbarLeft from '../components/Navigation/NavbarLeft.vue'
+import Navbar from '../components/Admin/Navigation/Navbar.vue'
+import NavbarLeft from '../components/Admin/Navigation/NavbarLeft.vue'
 import axios from 'axios';
 import http from "../http-common";
 

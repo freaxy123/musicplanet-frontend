@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import ArtistService from "../services/ArtistService";
+import ArtistService from "../../services/ArtistService";
 
 export default {
     name: "Add Artist",

@@ -77,9 +77,9 @@
 </template>
 
 <script>
-import SongService from "../services/SongService";
-import ArtistService from "../services/ArtistService";
-import PlaylistService from "../services/PlaylistService";
+import SongService from "../../services/SongService";
+import ArtistService from "../../services/ArtistService";
+import PlaylistService from "../../services/PlaylistService";
 
 export default {
 name: "Songs",

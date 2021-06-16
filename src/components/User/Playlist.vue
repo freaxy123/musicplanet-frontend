@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import PlaylistService from "../services/PlaylistService";
+import PlaylistService from "../../services/PlaylistService";
 
 export default {
     data(){

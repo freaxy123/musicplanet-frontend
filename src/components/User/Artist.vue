@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import ArtistService from "../services/ArtistService";
-import SongService from "../services/SongService";
+import ArtistService from "../../services/ArtistService";
+import SongService from "../../services/SongService";
 
 export default {
     data(){

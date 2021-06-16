@@ -3,12 +3,13 @@ import LoginView from "../views/LoginView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import User from "../layouts/User.vue";
 import Admin from "../layouts/Admin.vue";
-import Songs from "../components/Songs.vue";
-import AddArtist from "../components/AddArtist.vue";
-import AddSong from "../components/AddSong.vue";
-import Artist from "../components/Artist.vue";
-import Playlist from "../components/Playlist.vue"
-import Home from "../components/Home.vue";
+import Songs from "../components/User/Songs.vue";
+import AddArtist from "../components/User/AddArtist.vue";
+import AddSong from "../components/User/AddSong.vue";
+import Artist from "../components/User/Artist.vue";
+import Playlist from "../components/User/Playlist.vue"
+import Home from "../components/User/Home.vue";
+import Users from "../components/Admin/Users.vue"
 
 const routes = [
   {
@@ -65,33 +66,38 @@ const routes = [
     children: [
           {
             path: '',
-            name: 'AdminHome',
+            name: 'Home ',
             component: Home,
           },
           {
             path: 'library',
-            name: 'AdminLibrary',
+            name: 'Library ',
             component: Songs,
           },
           {
             path: 'addartist',
-            name: 'Admin_Add_Artist',
+            name: 'Add Artist ',
             component: AddArtist,
           },
           {
             path: 'addsong',
-            name: 'Admin_Add_Song',
+            name: 'Add Song ',
             component: AddSong,
           },
           {
             path: 'artist',
-            name: 'Admin_Artist',
+            name: 'Artist ',
             component: Artist,
           },
           {
             path: 'playlist',
-            name: 'Admin_Playlist',
+            name: 'Playlist ',
             component: Playlist,
+          },
+          {
+            path: 'users',
+            name: 'Users ',
+            component: Users,
           },
       ]
   },

@@ -19,15 +19,16 @@
         <div class="bg-black bg-opacity-10 h-0.5 mx-4 rounded my-2"></div>
 
         <div class="flex flex-col space-y-2">
-          <router-link class="hover:underline" :to="currentUrl + 'addartist'">Add Artist</router-link> 
-          <router-link class="hover:underline" :to="currentUrl + 'addsong'">Add Song</router-link>
+          <router-link class="hover:underline" to="/admin/addartist">Add Artist</router-link> 
+          <router-link class="hover:underline" to="/admin/addsong">Add Song</router-link>
+          <router-link class="hover:underline" to="/admin/users">Users</router-link>
         </div>
 
         <!-- Line -->
         <div class="bg-black bg-opacity-10 h-0.5 mx-4 rounded my-2"></div>
 
         <div class="flex flex-col space-y-2">
-          <a>Logged in as {{username}}</a>
+          <a class="italic">Logged in as {{username}}</a>
           <button @click="logout" class="flex flex-grow hover:underline items-center self-center space-x-1">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -76,8 +77,8 @@
 </template>
 
 <script>
-import Authorization from '../../services/Authorization.js';
-import PlaylistService from "../../services/PlaylistService";
+import Authorization from '../../../services/Authorization';
+import PlaylistService from "../../../services/PlaylistService";
 
 export default {
   props: ['refreshPlaylistsTrigger'],
