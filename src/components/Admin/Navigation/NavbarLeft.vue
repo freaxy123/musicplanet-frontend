@@ -1,5 +1,5 @@
 <template lang="">
-    <div class="bg-yellow-400 flex flex-col justify-between text-center w-1/6 py-5">
+    <div class="bg-gray-400 text-white flex flex-col justify-between text-center w-1/6 py-5">
       <!-- Top part -->
       <div>
 
@@ -12,20 +12,20 @@
               {{playlist.name}}
           </button>
 
-          <button class="hover:text-white transition duration-200 text-black py-2 rounded" @click="addPlaylistMenu = true">Add Playlist</button>
+          <button class="hover:text-yellow-400 transition duration-200 py-2 rounded" @click="addPlaylistMenu = true">Add Playlist</button>
         </div>
 
         <!-- Line -->
-        <div class="bg-black bg-opacity-10 h-0.5 mx-4 rounded my-2"></div>
+        <div class="bg-white h-0.5 mx-4 rounded my-2"></div>
 
         <div class="flex flex-col space-y-2">
-          <router-link class="hover:underline" to="/admin/addartist">Add Artist</router-link> 
-          <router-link class="hover:underline" to="/admin/addsong">Add Song</router-link>
+          <router-link class="hover:underline" to="/admin/addartist" id="addartistbutton">Add Artist</router-link> 
+          <router-link class="hover:underline" to="/admin/addsong" id="addsongbutton">Add Song</router-link>
           <router-link class="hover:underline" to="/admin/users">Users</router-link>
         </div>
 
         <!-- Line -->
-        <div class="bg-black bg-opacity-10 h-0.5 mx-4 rounded my-2"></div>
+        <div class="bg-white h-0.5 mx-4 rounded my-2"></div>
 
         <div class="flex flex-col space-y-2">
           <a class="italic">Logged in as {{username}}</a>
@@ -33,7 +33,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
             </svg>
-            <a>Logout</a>
+            <a id="adminlogoutbutton">Logout</a>
           </button>
         </div>
 
@@ -88,7 +88,8 @@ export default {
       username: "",
       addPlaylistMenu: false,
       playlist: {
-        name: ""
+        name: "",
+        username: ""
       },
       playlists: []
     }
@@ -112,6 +113,7 @@ export default {
     },
     addPlaylist(){
       let self = this;
+      this.playlist.username = this.username;
       PlaylistService.create(this.playlist)
         .then(response => {
             console.log(response.data);
@@ -124,7 +126,7 @@ export default {
         });
     },
     retrievePlaylists(){
-      PlaylistService.getAll()
+      PlaylistService.getfromuser(this.username)
         .then(response => {
             this.playlists = response.data;
             console.log(response.data);

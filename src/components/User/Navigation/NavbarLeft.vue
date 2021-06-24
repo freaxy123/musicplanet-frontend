@@ -32,7 +32,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
             </svg>
-            <a>Logout</a>
+            <a id="logoutbutton">Logout</a>
           </button>
         </div>
 
@@ -86,7 +86,8 @@ export default {
       username: "",
       addPlaylistMenu: false,
       playlist: {
-        name: ""
+        name: "",
+        username: ""
       },
       playlists: []
     }
@@ -109,6 +110,7 @@ export default {
     },
     addPlaylist(){
       let self = this;
+      this.playlist.username = this.username;
       PlaylistService.create(this.playlist)
         .then(response => {
             console.log(response.data);
@@ -121,7 +123,7 @@ export default {
         });
     },
     retrievePlaylists(){
-      PlaylistService.getAll()
+      PlaylistService.getfromuser(this.username)
         .then(response => {
             this.playlists = response.data;
             console.log(response.data);

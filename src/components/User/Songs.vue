@@ -85,6 +85,7 @@ export default {
 name: "Songs",
     data(){
       return{
+        username: "",
         songs: [],
         artists: [],
         showMenu: false,
@@ -94,6 +95,7 @@ name: "Songs",
     },
     mounted() {
       this.retrieveSongs();
+      this.getUsername();
     },
     methods: {
       retrieveSongs(){
@@ -120,7 +122,7 @@ name: "Songs",
       */
     },
     retrievePlaylists(){
-      PlaylistService.getAll()
+      PlaylistService.getfromuser(this.username)
         .then(response => {
             this.playlists = response.data;
             console.log(response.data);
@@ -143,6 +145,19 @@ name: "Songs",
             console.log(e);
             console.log("Playlists could not be retrieved");
         });
+    },
+    getUsername(){
+      this.username = this.parseJwt(localStorage.getItem("user")).sub;
+      //console.log(this.parseJwt(localStorage.getItem("user")));
+    },
+    parseJwt (token) {
+      var base64Url = token.split('.')[1];
+      var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+
+      return JSON.parse(jsonPayload);
     }
   }
 }

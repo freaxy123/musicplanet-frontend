@@ -1,31 +1,35 @@
 import http from "../http-common";
 
-class ArtistService {
+class UserService {
     getAll() {
         return http.get("/users/");
     }
     get(id) {
-        return http.get(`/artists/${id}`);
+        return http.get(`/users/${id}`);
     }
 
     create(data) {
-        return http.post("/artists/", data);
+        return http.post("/users/", data);
     }
 
     update(id, data) {
-        return http.put(`/artists/${id}`, data);
+        return http.put(`/users/${id}`, data);
     }
 
     delete(id) {
-        return http.delete(`/artists/${id}`);
+        return http.delete(`/users/${id}`);
     }
 
     deleteAll() {
-        return http.delete(`/artists/`);
+        return http.delete(`/users/`);
     }
     findByName(name){
-        return http.get(`/artists/name/${name}`)
+        return http.get(`/users/name/${name}`)
+    }
+
+    getAllRoles() {
+        return http.get("/users/roles");
     }
 }
 
-export default new ArtistService();
+export default new UserService();

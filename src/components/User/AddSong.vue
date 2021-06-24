@@ -2,19 +2,19 @@
     <form v-on:submit.prevent="save" class="p-4 space-y-6">
         <div class="">
             <a>Songtitle</a>
-            <input class="bg-gray-100 shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="title" type="text" placeholder="Example: Billie Jean" v-model="song.title">
+            <input class="bg-gray-100 shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="songtitleinput" type="text" placeholder="Example: Billie Jean" v-model="song.title">
         </div>
 
         <div class="flex flex-col">
             <a>Artist</a>
-            <select v-model="selectedArtist" class="border">
+            <select v-model="selectedArtist" class="border" id="artistdropdown">
                 <option value="" selected>None</option>
                 <option v-for="artist in artists" :value="artist">{{artist.name}}</option>
             </select>
         </div>
 
         <div class="text-center p-4">
-            <button class="bg-yellow-400 hover:text-white transition duration-200 text-black font-bold py-2 px-4 rounded w-1/6" type="submit">
+            <button class="bg-yellow-400 hover:text-white transition duration-200 text-black font-bold py-2 px-4 rounded w-1/6" type="submit" id="addsongbutton">
                 Add
             </button>
         </div>

@@ -7,6 +7,9 @@ class PlaylistService {
     get(id) {
         return http.get(`/playlists/${id}`);
     }
+    getfromuser(username) {
+        return http.get(`/playlists/username/${username}`);
+    }
 
     create(data) {
         return http.post("/playlists/", data);
